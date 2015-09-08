@@ -29,18 +29,24 @@ Yes, two addresses
 
 5. Correct Virginie Mitchell’s address to “New York, NY, 10108”.
 SELECT * FROM users WHERE first_name = "Virginie"
+SELECT street, city, state, zip FROM addresses WHERE user_id = 39;
 
 
 
 
 6. How much would it cost to buy one of each tool?
+SELECT SUM(price) FROM items WHERE category LIKE "%tool%";
+46477
 
 
 7. How many total items did we sell?
+SELECT SUM(quantity) FROM orders
+2125
 
 
 8. How much was spent on books?
-
+SELECT SUM(price) FROM items WHERE category LIKE "%book%";
+59241
 
 9. Simulate buying an item by inserting a User for yourself and an Order for that User.
 
