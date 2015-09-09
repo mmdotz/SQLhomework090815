@@ -45,17 +45,26 @@ SELECT SUM(quantity) FROM orders
 
 
 8. How much was spent on books?
-SELECT SUM(price) FROM items WHERE category LIKE "%book%";
+SELECT SUM(price) FROM items NATURAL JOIN orders WHERE category LIKE "%book%";
+SUM(price)
 59241
 
+(to check for duplicate values): SELECT price, title FROM items NATURAL JOIN orders ORDER BY title ASC
+
+
 9. Simulate buying an item by inserting a User for yourself and an Order for that User.
+INSERT INTO users (id, first_name, last_name, email) VALUES (9088, "Michelle", "Dotzenrod", "dotzenrods@gmail.com");
+
+INSERT INTO orders (id, user_id, item_id, quantity, created_at)
+VALUES (10000, 9088, 68, 23, 2015-09-08 00:40:30.457689);
+*syntax error on time 00
 
 ##Hard Mode
 What item was ordered most often? Grossed the most money?
-
+item_id 66
 
 What user spent the most?
-
+SELECT MAX(price) FROM items NATURAL JOIN orders WHERE = (SELECT first_name, last_name FROM users);
 
 What were the top 3 highest grossing categories?
 
